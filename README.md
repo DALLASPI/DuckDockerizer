@@ -5,13 +5,21 @@ Dockerize and deploy the classic DuckHunt game with ease. A seamless solution fo
 
 Welcome to the DuckHuntJS Dockerizer! This script allows you to easily set up and run the classic DuckHunt game inside a Docker container. Whether you're a fan of the nostalgic game or just looking to try it out, this tool makes the process seamless and fun!
 
+## 🚀 Quick Start
+
+To download and run the code in one go, use the following command:
+
+```bash
+git clone https://github.com/DALLASPI/DuckDockerizer.git && cd DuckDockerizer && chmod +x duckhunt_dockerizer.sh && ./duckhunt_dockerizer.sh
+```
+
 ## 🛠 Prerequisites
 
 - **Docker**: Ensure you have Docker installed and running on your machine. If not, [install Docker](https://docs.docker.com/get-docker/).
   
 - **Git**: The script uses Git to clone the game repository. If you don't have Git installed, you can get it [here](https://git-scm.com/downloads).
 
-## 🚀 Usage
+## 📖 Usage
 
 1. **Setup & Run**:
    ```bash
@@ -45,4 +53,8 @@ Feel free to fork this repository, make changes, and submit pull requests. Any c
 
 ## 📜 License
 
-This project is open-source. Feel free to use, modify, and distribute it as you see fit.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+---
+
+I've updated the License section to mention the MIT License and direct users to the `LICENSE` file for more details.
