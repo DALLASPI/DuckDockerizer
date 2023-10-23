@@ -41,16 +41,22 @@ fi
 
 safe_cd "$REPO_DIR"
 
-# Install Node.js dependencies and build the project
+# Install Node.js dependencies
 npm install
 
+# Ensure grunt-cli is installed globally
+if ! command -v grunt &> /dev/null; then
+    echo "grunt-cli is not installed globally. Installing it now..."
+    sudo npm install -g grunt-cli
+fi
+
 # Install grunt locally for the project
-npm install grunt --save-dev
+if [ ! -d "node_modules/grunt" ]; then
+    echo "Installing grunt locally for the project..."
+    npm install grunt --save-dev
+fi
 
-# Check for grunt-cli and grunt
-check_command grunt
-
-# Build the project
+# Build the project using Grunt
 grunt build
 
 # Check if Dockerfile exists, if not, create it
