@@ -3,6 +3,12 @@
 # Ensure the script exits on any error
 set -euo pipefail
 
+# Define repository and Docker details
+REPO_URL="https://github.com/MattSurabian/DuckHunt-JS.git"
+REPO_DIR="DuckHunt-JS"
+DOCKERFILE="Dockerfile"
+CONTAINER_NAME="duckhuntjs_container"
+
 # Function to check if a command is available
 check_command() {
     if ! command -v "$1" &> /dev/null; then
