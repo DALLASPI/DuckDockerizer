@@ -43,6 +43,25 @@ git clone https://github.com/DALLASPI/DuckDockerizer.git && cd DuckDockerizer &&
    - 🎮 Run the game inside a Docker container.
    - 🌐 Provide you with a URL to access the game in your browser.
 
+## 🧹 Cleanup
+
+If you wish to completely remove the Docker container and delete the cloned repository, you can use the following one-liner:
+
+```bash
+(docker ps -a --filter "name=duckhuntjs_container" --format "{{.Names}}" | grep -q "duckhuntjs_container" && docker rm -f duckhuntjs_container) && [ -d "DuckHunt-JS" ] && rm -rf DuckHunt-JS
+```
+
+This command will:
+
+1. Check if the Docker container named `duckhuntjs_container` exists and remove it.
+2. Check if the `DuckHunt-JS` directory exists and delete it.
+
+Please note: This action is irreversible. Use with caution.
+
+---
+
+You can add this snippet to the `README.md` under the existing sections to provide users with an option for a complete cleanup.
+
 2. **Cleanup**:
    If you wish to remove the Docker container (and optionally the image):
    ```bash
