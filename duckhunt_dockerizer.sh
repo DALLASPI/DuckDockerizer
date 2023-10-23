@@ -19,57 +19,32 @@ safe_cd() {
     fi
 }
 
-cleanup() {
-    # Check if a container named "duckhuntjs_container" exists, if so, remove it
-    if docker ps -a --filter "name=$CONTAINER_NAME" --format "{{.Names}}" | grep -q "$CONTAINER_NAME"; then
-        if ! docker rm -f "$CONTAINER_NAME"; then
-            echo "Failed to remove the Docker container. Exiting."
-            exit 1
-        else
-            echo "Successfully removed the Docker container."
-        fi
-    else
-        echo "No Docker container named $CONTAINER_NAME found."
-    fi
-
-    # Optionally, you can also remove the Docker image
-    # Uncomment the lines below if you want this functionality
-    # if docker images "duckhuntjs:latest" -q | grep -q "."; then
-    #     if ! docker rmi "duckhuntjs:latest"; then
-    #         echo "Failed to remove the Docker image. Exiting."
-    #         exit 1
-    #     else
-    #         echo "Successfully removed the Docker image."
-    #     fi
-    # else
-    #     echo "Docker image duckhuntjs:latest not found."
-    # fi
-}
-
-# Check for the cleanup argument
-if [ "${1:-}" == "cleanup" ]; then
-    cleanup
-    exit 0
-fi
-
 # Check prerequisites
 check_command git
 check_command docker
+check_command node
+check_command npm
+check_command grunt
 
 # Define repository and Docker details
-REPO_DIR="duckHuntJS"
+REPO_URL="https://github.com/MattSurabian/DuckHunt-JS.git"
+REPO_DIR="DuckHunt-JS"
 DOCKERFILE="Dockerfile"
 CONTAINER_NAME="duckhuntjs_container"
 
 # Clone the repository if it doesn't exist
 if [ ! -d "$REPO_DIR" ]; then
-    if ! git clone https://github.com/evKoval/duckHuntJS.git "$REPO_DIR"; then
+    if ! git clone "$REPO_URL" "$REPO_DIR"; then
         echo "Failed to clone the repository. Exiting."
         exit 1
     fi
 fi
 
 safe_cd "$REPO_DIR"
+
+# Install Node.js dependencies and build the project
+npm install
+grunt build
 
 # Check if Dockerfile exists, if not, create it
 if [ ! -f "$DOCKERFILE" ]; then
@@ -78,7 +53,7 @@ if [ ! -f "$DOCKERFILE" ]; then
 FROM nginx:alpine
 
 # Copy the game files to the nginx directory
-COPY . /usr/share/nginx/html
+COPY dist/ /usr/share/nginx/html
 
 # Expose port 80 for the web server
 EXPOSE 80
