@@ -1,5 +1,8 @@
 # DuckDockerizer
 Dockerize and deploy the classic DuckHunt game with ease. A seamless solution for nostalgic gaming in a modern containerized environment.
+Certainly! Here's the updated `README.md` based on the changes to the script and the new repository:
+
+---
 
 # 🦆 DuckHuntJS Dockerizer 🎮
 
@@ -19,6 +22,13 @@ git clone https://github.com/DALLASPI/DuckDockerizer.git && cd DuckDockerizer &&
   
 - **Git**: The script uses Git to clone the game repository. If you don't have Git installed, you can get it [here](https://git-scm.com/downloads).
 
+- **Node.js & npm**: The game setup requires Node.js and npm. If you don't have them installed, get them [here](https://nodejs.org/).
+
+- **Grunt**: The game uses Grunt for building. Install it globally using:
+  ```bash
+  npm install -g grunt-cli
+  ```
+
 ## 📖 Usage
 
 1. **Setup & Run**:
@@ -28,7 +38,8 @@ git clone https://github.com/DALLASPI/DuckDockerizer.git && cd DuckDockerizer &&
    This will:
    - ✅ Check if you have the necessary prerequisites.
    - 📦 Clone the DuckHuntJS repository (if it hasn't been cloned already).
-   - 🏗 Build a Docker image for the game.
+   - 🏗 Build the game using Grunt.
+   - 🐳 Build a Docker image for the game.
    - 🎮 Run the game inside a Docker container.
    - 🌐 Provide you with a URL to access the game in your browser.
 
@@ -47,6 +58,8 @@ git clone https://github.com/DALLASPI/DuckDockerizer.git && cd DuckDockerizer &&
 
 - **Docker Issues**: Ensure Docker is running. If you face issues related to Docker, refer to the [official Docker documentation](https://docs.docker.com/).
 
+- **Node or Grunt Issues**: Ensure Node.js, npm, and Grunt are correctly installed and available in your PATH.
+
 ## 🤝 Contributing
 
 Feel free to fork this repository, make changes, and submit pull requests. Any contributions, whether it's refining the script, adding features, or improving documentation, are always welcome!
@@ -55,6 +68,3 @@ Feel free to fork this repository, make changes, and submit pull requests. Any c
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
----
-
-I've updated the License section to mention the MIT License and direct users to the `LICENSE` file for more details.
