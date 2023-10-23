@@ -44,6 +44,9 @@ safe_cd "$REPO_DIR"
 # Install Node.js dependencies and build the project
 npm install
 
+# Install grunt locally for the project
+npm install grunt --save-dev
+
 # Check for grunt-cli and grunt
 check_command grunt
 
